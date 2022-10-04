@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h1>Список заказов</h1>
+
+        <main>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Продукт</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                <tr>
+                    <th scope="row">{{ user.id }}</th>
+                    <td>{{ user.firstName }}</td>
+                    <td>
+                        {% for product in user.getProducts() %}
+                            <li>
+                                {{ product.name }}
+                            </li>
+                        {% endfor %}
+                    </td>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+{% endblock %}
